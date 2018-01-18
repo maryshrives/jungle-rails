@@ -1,0 +1,37 @@
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+  <h4>Thank you for your order: <%= @order.email %></h4>
+  <% @total_cost = 0 %>
+  <% @order.line_items.each do |line_item| %>
+    <% product = line_item.product %>
+    <% total_price_dollars = line_item.total_price_cents / 100.0 %>
+    <% @total_cost += line_item.total_price_cents %>
+
+    <div>
+      <h4>Product: <%= product.name %></h4>
+    </div>
+    <div>
+      <%= product.description %>
+    </div>
+    <div>
+      Unit Price: $<%= product.price %>
+    </div>
+    <br>
+    <div>
+      Quantity: <%= line_item.quantity %>
+    </div>
+    <br>
+    <div>
+      Price: $<%= total_price_dollars %>
+    </div>
+  <% end %>
+  <div>
+    ~~~~~~~~~~Thank you for shopping in the Jungle!~~~~~~~~~~
+  </div>
+  <div>
+    <%= @total_cost = @total_cost / 100.0 %>
+    TOTAL: $<%= @total_cost %>
+  </div>
+</body>
