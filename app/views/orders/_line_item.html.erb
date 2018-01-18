@@ -1,0 +1,23 @@
+<% product = line_item.product %>
+<% total_price_dollars = line_item.total_price_cents / 100.0 %>
+<% @total_cost += line_item.total_price_cents %>
+
+<tr>
+  <td>
+    <%= image_tag product.image.tiny %>
+  </td>
+  <td>
+    <h4><%= product.name %></h4>
+    <br>
+    <p><%= product.description %></p>
+  </td>
+  <td>
+    $<%= product.price %>
+  </td>
+  <td>
+    <%= line_item.quantity %>
+  </td>
+  <td>
+    $<%= total_price_dollars %>
+  </td>
+</tr>
