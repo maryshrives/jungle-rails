@@ -4,7 +4,8 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @product = Product.find params[:product_id]
     @review.product = @product
-    @review.user_id = current_user
+    @user = current_user
+    @review.user_id = @user_id
 
 
     if @review.save
@@ -19,6 +20,6 @@ class ReviewsController < ApplicationController
 private
 
   def review_params
-    params.require(:review). permit(:description, :rating, :product_id)
+    params.require(:review). permit(:description, :rating, :product_id, :user_id)
   end
 end

@@ -23,6 +23,7 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
         </dl>
+      <% if current_user %>
         <div>
           <%= form_for([@product, @review]) do |f| %>
             <div class="field">
@@ -37,12 +38,16 @@
               <%= f.submit %>
             </div>
           <% end %>
+        </div>
+          <% end %>
+        <div>
           <h2>Reviews from our customers:</h2>
           <% @product.review.reverse_each do |review| %>
             <p>Review: <%= review.description %></p>
             <p>Rating: <%= review.rating %></p>
             <br>
           <% end %>
+        </div>
       </div>
     </div>
 
