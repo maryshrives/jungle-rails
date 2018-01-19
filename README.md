@@ -1,6 +1,6 @@
-# Jungle
+# Welcome to the Jungle!
 
-A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example. I inherited this codebase and learned a new language, ecosystem, and framework.
+A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example. For this project I inherited an existing codebase and learned a new language, ecosystem, and framework.
 
 ## Features
 
@@ -12,6 +12,11 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 - Checkout via credit card (using Stripe)
 - Order confirmation page and email
 
+## Using Jungle:
+![screenshot1](https://github.com/maryshrives/jungle-rails/blob/master/public/docs/jungle1.png?raw=true)
+![screenshot2](https://github.com/maryshrives/jungle-rails/blob/master/public/docs/jungle2.png?raw=true)
+![screenshot3](https://github.com/maryshrives/jungle-rails/blob/master/public/docs/jungle3.png?raw=true)
+![screenshot4](https://github.com/maryshrives/jungle-rails/blob/master/public/docs/jungle4.png?raw=true)
 
 ## Setup
 
