@@ -8,13 +8,13 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, length: { minimum: 6 }
 
-  # def self.authenticate_with_credentials(email, password)
-  #   email_pure = email.strip.downcase
-  #   user = User.find_by_email(email_pure)
-  #   if user && user.authenticate(password)
-  #     user
-  #   else
-  #     nil
-  #   end
-  # end
+  def self.authenticate_with_credentials(email, password)
+    email_pure = email.strip.downcase #strip removes whitespace
+    user = User.find_by_email(email_pure)
+    if user && user.authenticate(password)
+      user
+    else
+      nil
+    end
+  end
 end

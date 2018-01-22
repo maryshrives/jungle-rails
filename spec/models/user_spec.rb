@@ -57,16 +57,35 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '.authenticate_with_credentials' do
+    it 'should take in email and pass, authenticate the user, return instance of the user' do
+      @user = User.create!(first_name: 'Wedge', last_name: 'Antilles', email: 'x@x.co', password: 'chewie', password_confirmation: 'chewie')
+      @user2 = User.authenticate_with_credentials('x@x.co', 'chewie')
+      expect(@user2).to be == @user
+    end
 
+    it 'should return nil if there isn\'t a user with that email' do
+      @user = User.create!(first_name: 'Wedge', last_name: 'Antilles', email: 'x@x.co', password: 'chewie', password_confirmation: 'chewie')
+      @user2 = User.authenticate_with_credentials('x@x.com', 'chewie')
+      expect(@user2).to be nil
+    end
 
+    it 'should return nil if the password does not match the users password' do
+      @user = User.create!(first_name: 'Wedge', last_name: 'Antilles', email: 'x@x.co', password: 'chewie', password_confirmation: 'chewie')
+      @user2 = User.authenticate_with_credentials('x@x.co', 'amidala')
+      expect(@user2).to be nil
+    end
 
+    it 'should return an instance of the user even if there is whitespace before or after the email' do
+      @user = User.create!(first_name: 'Wedge', last_name: 'Antilles', email: 'x@x.co', password: 'chewie', password_confirmation: 'chewie')
+      @user2 = User.authenticate_with_credentials('    x@x.co', 'chewie')
+      expect(@user2).to be == @user
+    end
 
-
-
-
-
-
-
-
-
+    it 'should return an instance of the user even if the email\'s case is different than during registration' do
+      @user = User.create!(first_name: 'Wedge', last_name: 'Antilles', email: 'x@x.co', password: 'chewie', password_confirmation: 'chewie')
+      @user2 = User.authenticate_with_credentials('X@X.co', 'chewie')
+      expect(@user2).to be == @user
+    end
+  end
 end
