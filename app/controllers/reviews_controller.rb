@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
   skip_before_action :require_login, only: [:destroy]
 
   def create
+    # byebug
     @user = current_user
     @review = @user.reviews.new(review_params)
     @product = Product.find params[:product_id]
